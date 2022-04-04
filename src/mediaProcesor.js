@@ -1,5 +1,6 @@
 let mediaRecorders = [];
 let bufferMap = [];
+let interval = null;
 
 export const startMediaProcessors = async (streams = []) => {
     mediaRecorders = streams.map(stream => new MediaRecorder(stream));
@@ -24,4 +25,10 @@ export const stoptMediaProcessors = () => {
         mr.stop();
         bufferMap[i] = null;
     });
+};
+
+export const startBufferingIntervals = (mediaRecorders = []) => {
+    interval = setInterval(() => {
+        //
+    }, 100);
 };
