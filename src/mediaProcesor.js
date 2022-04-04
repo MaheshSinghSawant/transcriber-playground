@@ -7,9 +7,10 @@ export const startMediaProcessors = async (streams = []) => {
 
     mediaRecorders.forEach((mr, i) => {
         mr.addEventListener("dataavailable", event => {
-            const blob = event.data;
-
-            bufferMap[i].append(blob);
+            if (bufferMap[i]) {
+                const blob = event.data;
+                bufferMap[i].append(blob);
+            }
         });
 
         mr.start();
@@ -21,6 +22,6 @@ export const startMediaProcessors = async (streams = []) => {
 export const stoptMediaProcessors = () => {
     mediaRecorders.forEach((mr, i) => {
         mr.stop();
-        bufferMap(i) = null;
+        bufferMap[i] = null;
     });
 };
