@@ -1,0 +1,11 @@
+{
+  "name": "transcriber-playground",
+  "version": "1.0.0",
+  "type": "module",
+  "main": "index.js",
+  "author": "Ricardo Recaredo <rrecaredo@twilio.com>",
+  "license": "MIT",
+  "dependencies": {
+    "@aws-sdk/client-transcribe-streaming": "^3.58.0"
+  }
+}
