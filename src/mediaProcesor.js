@@ -10,11 +10,11 @@ export const startMediaProcessors = async (streams = []) => {
         mr.addEventListener("dataavailable", event => {
             if (bufferMap[i]) {
                 const blob = event.data;
-                bufferMap[i].append(blob);
+                bufferMap[i].push(blob);
             }
         });
 
-        mr.start();
+        mr.start(50);
     });
 
     window.getBuffer = () => console.log(bufferMap);

@@ -24,6 +24,10 @@ document.addEventListener("readystatechange", function () {
         }
     });
 
+    document.getElementById("#log").addEventListener("click", () => {
+        window.getBuffer && window.getBuffer();
+    });
+
     document.getElementById("#stop").addEventListener("click", async () => {
         try {
             audioSources.map(as => as.pause());
