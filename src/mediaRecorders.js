@@ -1,8 +1,17 @@
 let mediaRecorders = [];
+
+/**
+ * [
+ *    0: [Byte]
+ *    1: [Byte, Byte]
+ * ]
+ */
+
+
 let bufferMap = [];
 let interval = null;
 
-export async function startMediaProcessors(streams = []) {
+export async function startMediaRecorders(streams = []) {
     mediaRecorders = streams.map(stream => new MediaRecorder(stream, { mimeType: "audio/webm; codecs=pcm" }));
     bufferMap = Array(mediaRecorders.length).fill([]);
 
@@ -36,7 +45,7 @@ export function getBufferSamples() {
         .map(buffer => new Int32Array(buffer));
 };
 
-export function stoptMediaProcessors() {
+export function stoptMediaRecorders() {
     mediaRecorders.forEach((mr, i) => {
         mr.stop();
         bufferMap[i] = null;

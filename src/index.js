@@ -1,5 +1,5 @@
 import { getAudioSources } from './audio.js';
-import { stoptMediaProcessors, startMediaProcessors } from './mediaprocesor.js';
+import { startMediaRecorders, stoptMediaRecorders } from './mediaRecorders.js';
 
 document.addEventListener("readystatechange", function () {
     let audioSources = [];
@@ -17,7 +17,7 @@ document.addEventListener("readystatechange", function () {
 
             const streams = await Promise.all(getStreams);
 
-            startMediaProcessors([...streams]);
+            startMediaRecorders([...streams]);
 
         } catch (error) {
             console.log({ error });
@@ -31,7 +31,7 @@ document.addEventListener("readystatechange", function () {
     document.getElementById("#stop").addEventListener("click", async () => {
         try {
             audioSources.map(as => as.pause());
-            stoptMediaProcessors();
+            stoptMediaRecorders();
         } catch (error) {
             console.log({ error });
         }
